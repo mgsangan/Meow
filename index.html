@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Message for Meow</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #fff8f0;
       color: #333;
+      margin: 0;
       padding: 20px;
       line-height: 1.6;
       animation: fadeIn 2s ease-in;
@@ -19,35 +21,56 @@
     }
 
     .message-box {
-      max-width: 700px;
-      margin: 40px auto;
+      max-width: 90%;
+      margin: 20px auto;
       background-color: #fff;
       border: 2px solid #f2c1c1;
       border-radius: 12px;
-      padding: 30px;
+      padding: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      animation: fadeIn 3s ease-in;
     }
 
     h2 {
       color: #d66;
       text-align: center;
       margin-bottom: 20px;
+      font-size: 1.5em;
     }
 
     .signature {
-      margin-top: 40px;
+      margin-top: 30px;
       text-align: right;
       font-style: italic;
+      font-size: 1em;
     }
 
     .paragraph {
       visibility: hidden;
       white-space: pre-wrap;
+      font-size: 1em;
     }
 
     audio {
       display: none;
+    }
+
+    @media (min-width: 600px) {
+      .message-box {
+        max-width: 700px;
+        padding: 30px;
+      }
+
+      h2 {
+        font-size: 2em;
+      }
+
+      .paragraph {
+        font-size: 1.1em;
+      }
+
+      .signature {
+        font-size: 1.1em;
+      }
     }
   </style>
 </head>
@@ -73,7 +96,7 @@
     const paragraphs = document.querySelectorAll('.paragraph');
     let delay = 0;
 
-    paragraphs.forEach((p, index) => {
+    paragraphs.forEach((p) => {
       const text = p.textContent;
       p.textContent = '';
       p.style.visibility = 'visible';
