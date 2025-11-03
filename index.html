@@ -1,116 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Message for Meow</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Meow 💕</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff8f0;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #ffe4e9, #fddde6);
+      color: #4a2c2a;
       margin: 0;
       padding: 20px;
-      line-height: 1.6;
-      animation: fadeIn 2s ease-in;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .message-box {
-      max-width: 90%;
-      margin: 20px auto;
-      background-color: #fff;
-      border: 2px solid #f2c1c1;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      color: #d66;
+    h1 {
+      font-family: 'Brush Script MT', cursive;
       text-align: center;
+      color: #e91e63;
+      font-size: 2.5em;
       margin-bottom: 20px;
-      font-size: 1.5em;
+    }
+
+    #start-button {
+      display: block;
+      margin: 40px auto;
+      padding: 14px 28px;
+      font-size: 18px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+      transition: background-color 0.3s;
+    }
+
+    #start-button:hover {
+      background-color: #e91e63;
+    }
+
+    #message-container {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      padding: 24px;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      display: none;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px rgba(233,30,99,0.4); }
+      to { box-shadow: 0 0 20px rgba(233,30,99,0.8); }
+    }
+
+    #typewriter {
+      font-size: 1.2em;
+      line-height: 1.8;
+      white-space: pre-line;
+      border-right: 2px solid #e91e63;
+      overflow: hidden;
+      animation: blink 0.75s step-end infinite;
+      min-height: 400px;
+      text-align: left;
+      padding: 0 10px;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
 
     .signature {
-      margin-top: 30px;
+      font-family: 'Brush Script MT', cursive;
       text-align: right;
-      font-style: italic;
-      font-size: 1em;
+      margin-top: 40px;
+      color: #e91e63;
+      font-size: 1.5em;
     }
 
-    .paragraph {
-      visibility: hidden;
-      white-space: pre-wrap;
-      font-size: 1em;
-    }
-
-    audio {
-      display: none;
-    }
-
-    @media (min-width: 600px) {
-      .message-box {
-        max-width: 700px;
-        padding: 30px;
-      }
-
-      h2 {
+    @media (max-width: 600px) {
+      h1 {
         font-size: 2em;
       }
 
-      .paragraph {
-        font-size: 1.1em;
+      #typewriter {
+        font-size: 1em;
       }
 
       .signature {
-        font-size: 1.1em;
+        font-size: 1.2em;
       }
+    }
+
+    /* Floating hearts animation */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Heart_corazón.svg/1024px-Heart_corazón.svg.png') no-repeat center;
+      background-size: contain;
+      animation: float 8s infinite ease-in-out, fadeIn 2s forwards;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-100px) scale(1.2); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 0.6; }
     }
   </style>
 </head>
 <body>
-  <audio autoplay loop>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
     <source src="meow.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <div class="message-box">
-    <h2>Hi Meow,</h2>
-    <p class="paragraph">I know you’ve been going through a lot lately. I may not know every detail, but I can feel that your heart is tired. And I just want you to know… I’m here.</p>
-    <p class="paragraph">You don’t have to go through everything alone. You don’t have to carry all the weight by yourself. I’m not here to fix everything or rush you to feel better. I’m just here—to stay, to listen, to care.</p>
-    <p class="paragraph">If you ever feel like talking, or even just sitting in silence with someone who cares, I’m just in my party room. You can message me anytime, on any app, any platform. No pressure. No need to explain anything. Just come as you are.</p>
-    <p class="paragraph">I want to protect you, not just from the world, but from the feeling that you’re alone in it. I want to take care of you in the small ways I can—by being present, by being kind, by reminding you that you matter.</p>
-    <p class="paragraph">You don’t have to be okay all the time. You don’t have to smile when you don’t feel like it. You’re allowed to feel sad, tired, or lost. And even in those moments, I’ll still be here—quietly cheering for you, gently holding space for you.</p>
-    <p class="paragraph">You’re important to me, Meow. I care about you deeply. And I’ll keep showing up, in little ways, to remind you that you’re not alone.</p>
-    <p class="paragraph">Whenever you’re ready, I’m just a message away.</p>
-    <div class="signature">—Mark</div>
+  <!-- Floating Hearts -->
+  <div class="heart" style="top:10%; left:5%; animation-delay:0s;"></div>
+  <div class="heart" style="top:20%; left:80%; animation-delay:2s;"></div>
+  <div class="heart" style="top:30%; left:40%; animation-delay:4s;"></div>
+  <div class="heart" style="top:50%; left:70%; animation-delay:6s;"></div>
+
+  <!-- Start Button -->
+  <button id="start-button" onclick="startSite()">Click here, my love 💗</button>
+
+  <!-- Message Container -->
+  <div id="message-container">
+    <h1>Para kay Meow 💕</h1>
+    <div id="typewriter"></div>
+    <div class="signature">— Mark</div>
   </div>
 
   <script>
-    const paragraphs = document.querySelectorAll('.paragraph');
-    let delay = 0;
+    const fullMessage = `
+Para kay Meow, ang mahal kong Angelica,
 
-    paragraphs.forEach((p) => {
-      const text = p.textContent;
-      p.textContent = '';
-      p.style.visibility = 'visible';
+Alam kong minsan ang mundo ay magulo, maingay, at puno ng sakit. Alam kong may mga sugat kang pilit mong tinatakpan, mga alaala na mahirap kalimutan, at tiwalang unti-unting binuo pero madaling masira. Pero sa kabila ng lahat ng iyon, gusto kong ipaalam sa'yo—ng buong puso at kaluluwa—na hindi ako susuko.
 
-      setTimeout(() => {
-        let i = 0;
-        const interval = setInterval(() => {
-          p.textContent += text.charAt(i);
-          i++;
-          if (i >= text.length) clearInterval(interval);
-        }, 30); // typing speed
-      }, delay);
-      delay += text.length * 30 + 500; // delay before next paragraph starts
-    });
+Hindi ako susuko. Hindi sa katahimikan. Hindi sa distansya. Hindi sa takot. Hindi sa pagod ng paghihintay. Hindi sa sakit ng pangungulila.
+
+Dahil mahal kita.
+
+Hindi ito yung pagmamahal na pansamantala. Hindi ito yung pagmamahal na umaatras kapag mahirap na. Mahal kita sa paraang matatag, mapagpasensya, at totoo. Mahal kita sa bawat anyo mo—masaya, malungkot, tahimik, galit, naguguluhan, nagtatago.
+
+Mahal kita kahit hindi mo ako laging pinapansin. Mahal kita kahit may mga araw na tila malayo ka. Mahal kita kahit hindi mo pa ako kayang mahalin pabalik.
+
+At ayos lang. Dahil hindi ako nandito para pilitin ka. Nandito ako para iparamdam sa'yo na may isang taong handang maghintay, umintindi, at magmahal nang walang kapalit.
+
+Ipaglalaban kita. Ipaglalaban ko ang karapatang mahalin ka. Ipaglalaban ko ang karapatang maging sandalan mo, kahit minsan lang. Ipaglalaban ko ang pangarap na balang araw, maramdaman mo rin ang pagmamahal na alay ko.
+
+Hindi ako perpekto. Marami akong pagkukulang. Pero ang pagmamahal ko sa'yo—buo, dalisay, at walang pag-aalinlangan.
+
+Kung kailangan kong magsulat ng tula gabi-gabi para iparamdam sa'yo ang halaga mo, gagawin ko. Kung kailangan kong maghintay ng taon, maghihintay ako. Kung kailangan kong tahimik na sumuporta mula sa malayo, gagawin ko iyon nang may ngiti sa puso.
+
+Dahil ikaw si Meow. Ikaw ang laman ng bawat dasal ko. Ikaw ang inspirasyon sa bawat proyekto, sa bawat mensahe, sa bawat himig na nililikha ko.
+
+At kung sakaling dumating ang araw na pagod ka na, nalilito, o nawawala—nandito lang ako. Hindi ako susuko. Hindi ako lalayo. Hindi ako mawawala.
+
+Dahil mahal kita. At ang pagmamahal ko, hindi sumusuko.
+
+“Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It always protects, always trusts, always hopes, always perseveres. Love never fails.” — 1 Corinthians 13:4–8
+`;
+
+    function typeText(text, index = 0) {
+      if (index <= text.length) {
+        document.getElementById("typewriter").innerText = text.slice(0, index);
+        const delay = 60 + Math.random() * 60; // More natural typing speed
+        setTimeout(() => typeText(text, index + 1), delay);
+      }
+    }
+
+    function startSite() {
+      const music = document.getElementById('bg-music');
+      const message = document.getElementById('message-container');
+      const button = document.getElementById('start-button');
+
+      music.play().then(() => {
+        message.style.display = 'block';
+        setTimeout(() => {
+          message.style.opacity = '1';
+        }, 100);
+
+        button.style.display = 'none';
+        typeText(fullMessage);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }).catch(() => {
+        alert("Please tap anywhere to enable music 💗");
+        document.body.addEventListener('click', () => music.play(), { once: true });
+      });
+    }
   </script>
 </body>
 </html>
