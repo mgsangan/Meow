@@ -102,7 +102,6 @@
       }
     }
 
-    /* Floating hearts animation */
     .heart {
       position: absolute;
       width: 20px;
@@ -126,57 +125,66 @@
 </head>
 <body>
 
-  <!-- Background Music -->
   <audio id="bg-music" loop>
-    <source src="meow22.mp3" type="audio/mpeg">
+    <source src="TADHANA (Lyrics) - UP DHARMA DOWN.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Floating Hearts -->
   <div class="heart" style="top:10%; left:5%; animation-delay:0s;"></div>
   <div class="heart" style="top:20%; left:80%; animation-delay:2s;"></div>
   <div class="heart" style="top:30%; left:40%; animation-delay:4s;"></div>
   <div class="heart" style="top:50%; left:70%; animation-delay:6s;"></div>
 
-  <!-- Start Button -->
   <button id="start-button" onclick="startSite()">Click here, my love 💗</button>
 
-  <!-- Message Container -->
   <div id="message-container">
-    <h1>To My Dear Meow💕</h1>
+    <h1>🌙 Para kay Angelica, Kahit Malayo Ka 🌙</h1>
     <div id="typewriter"></div>
     <div class="signature">— Mark</div>
   </div>
 
   <script>
     const fullMessage = `
+Mahal na mahal kita, sobra-sobra, 
+Patay na patay ako sa’yo, Angelica. 
+Kahit magkalayo tayo  Manila, Iloilo   
+Puso ko’y lumilipad, lumalapit sa’yo.
 
+Sa bawat gabi, ikaw ang dasal, 
+Sa bawat umaga, ikaw ang araw. 
+Ayokong mawala ka, ‘yan ang totoo, 
+Dahil sa puso ko, ikaw ang bumuo.
 
-Kahit malayo ka, mahal kong Angelica, 
-Narito pa rin ang yakap ng salita. 
-Sa bawat pintig ng pusong pagod, 
-May bulong akong dala—mahinahon, malambot.
+Kung pwede lang, araw-araw kitang yakapin, 
+Sa tula, sa hangin, sa init ng damdamin. 
+Gagawin kong makulay ang mundo mo, 
+Dahil ikaw ang kulay ng mundo ko.
 
-Alam kong masakit, alam kong mahirap, 
-Ang katawan mo’y tila may bigat. 
-Pero sana, sa tula kong ito, 
-Maramdaman mong may nagmamahal sa’yo.
+Pasensya na, mahal, sa nangyari ngayon, 
+Alam kong nasaktan ka, at ako’y may ambag doon. 
+Hindi ko ginusto, hindi ko sinadya, 
+Ang mahalaga’y ayokong mawala ka.
 
-Uminom ka ng tsaa, magpahinga ng konti, 
-Hayaan mong ang mundo’y tumahimik sandali. 
-At kung kailangan mo ng lakas o aliw, 
-Isipin mong ako’y nariyan, kahit sa hangin lang dumadalaw.
+Ikaw lang ang mahal ko, Angelica, wala nang iba, 
+Sa puso’t isip ko, ikaw lang ang tanging sinta. 
+Kahit ilang ulit pa akong masaktan o magkamali, 
+Babalik at babalik ako sa’yo  buong puso, walang mali.
 
-Ikaw ay ganda, kahit may luha, 
-Ikaw ay mahalaga, kahit may kirot. 
-At sa puso kong marunong magmahal ng malayo, 
-Ikaw ang tula, ang dasal, ang tanong na laging "kamusta?"
+Ikaw ang tula sa bawat pahina ng araw, 
+Ang musika sa katahimikan ng gabing mapanglaw. 
+Ikaw ang dahilan kung bakit ako sumusulat, 
+Upang ipadama ang pag-ibig kong tapat.
+
+Kaya sana, maramdaman mo rin, 
+Ang pag-ibig kong tunay, walang bitin. 
+Mahal na mahal kita, Angelica, 
+At kahit malayo ka… akin ka pa rin sa tula.
 `;
 
     function typeText(text, index = 0) {
       if (index <= text.length) {
         document.getElementById("typewriter").innerText = text.slice(0, index);
-        const delay = 60 + Math.random() * 60; // More natural typing speed
+        const delay = 60 + Math.random() * 60;
         setTimeout(() => typeText(text, index + 1), delay);
       }
     }
@@ -193,8 +201,11 @@ Ikaw ang tula, ang dasal, ang tanong na laging "kamusta?"
         }, 100);
 
         button.style.display = 'none';
-        typeText(fullMessage);
         window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(() => {
+          typeText(fullMessage);
+        }, 32000); // 32-second delay
       }).catch(() => {
         alert("Please tap anywhere to enable music 💗");
         document.body.addEventListener('click', () => music.play(), { once: true });
