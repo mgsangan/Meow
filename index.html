@@ -1,216 +1,201 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Meow 💕</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meow’s Choice</title>
+  <meta name="description" content="A soft, sweet gateway for Meow to choose her page." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
+    :root{
+      --bg:#0f0f14;
+      --card:#151720;
+      --accent:#ff8fb3; /* soft rose */
+      --accent-2:#ffc6d9; /* pale blush */
+      --text:#f7f7fb;
+      --muted:#cfd4e3;
+      --glow: 0 0 24px rgba(255,143,179,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 85% 10%, #1d2030 8%, transparent 60%),
+        radial-gradient(1000px 500px at 10% 90%, #1a1d2b 8%, transparent 60%),
+        linear-gradient(180deg, var(--bg), #10121a 50%, #0e1016);
+      color:var(--text);
+      font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+    .wrap{
+      max-width:860px;
+      width:100%;
+    }
+    header{
+      text-align:center;
+      margin-bottom:22px;
+    }
+    .title{
+      font-family:"Playfair Display", serif;
+      font-size: clamp(28px, 6vw, 48px);
+      line-height:1.1;
+      color:var(--text);
+      letter-spacing:.4px;
+      text-shadow: 0 8px 24px rgba(0,0,0,.35);
+    }
+    .subtitle{
+      margin-top:10px;
+      font-weight:300;
+      color:var(--muted);
+      font-size: clamp(15px, 2.8vw, 18px);
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #ffe4e9, #fddde6);
-      color: #4a2c2a;
-      margin: 0;
-      padding: 20px;
-      position: relative;
-      overflow-x: hidden;
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:16px;
+      margin-top:24px;
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
     }
 
-    h1 {
-      font-family: 'Brush Script MT', cursive;
-      text-align: center;
-      color: #e91e63;
-      font-size: 2.5em;
-      margin-bottom: 20px;
+    .card{
+      position:relative;
+      background:linear-gradient(180deg, var(--card), #131523);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:18px;
+      overflow:hidden;
+      transform:translateZ(0);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(500px 120px at 80% 20%, rgba(255,143,179,.15), transparent 60%),
+        radial-gradient(500px 120px at 10% 90%, rgba(255,198,217,.12), transparent 60%);
+      opacity:.85; pointer-events:none;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow: var(--glow);
+      border-color: rgba(255,143,179,.35);
+    }
+    .card h3{
+      margin:4px 0 6px;
+      font-size: clamp(18px, 3vw, 22px);
+      font-weight:700;
+      color:var(--text);
+    }
+    .card p{
+      margin:0 0 14px;
+      font-size: clamp(14px, 2.6vw, 16px);
+      color:var(--muted);
     }
 
-    #start-button {
-      display: block;
-      margin: 40px auto;
-      padding: 14px 28px;
-      font-size: 18px;
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
-      transition: background-color 0.3s;
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      background:linear-gradient(180deg, var(--accent), #ff6f9d);
+      color:#1a0f14;
+      font-weight:700;
+      letter-spacing:.3px;
+      text-decoration:none;
+      transition:filter .2s ease, transform .15s ease;
+      box-shadow: 0 10px 24px rgba(255,111,157,.25);
+      will-change: transform;
+    }
+    .cta:hover{filter:brightness(1.05)}
+    .cta:active{transform:translateY(1px)}
+    .spark{
+      width:9px;height:9px;border-radius:50%;
+      background: var(--accent-2);
+      box-shadow:
+        0 0 10px rgba(255,198,217,.8),
+        0 0 20px rgba(255,143,179,.6);
+      animation: twinkle 2.4s ease-in-out infinite;
+    }
+    @keyframes twinkle{
+      0%,100%{opacity:.6; transform:scale(.9)}
+      50%{opacity:1; transform:scale(1.2)}
     }
 
-    #start-button:hover {
-      background-color: #e91e63;
+    footer{
+      margin-top:24px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
     }
-
-    #message-container {
-      max-width: 900px;
-      margin: 0 auto 60px;
-      padding: 24px;
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      border-radius: 20px;
-      display: none;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      animation: glow 3s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { box-shadow: 0 0 10px rgba(233,30,99,0.4); }
-      to { box-shadow: 0 0 20px rgba(233,30,99,0.8); }
-    }
-
-    #typewriter {
-      font-size: 1.2em;
-      line-height: 1.8;
-      white-space: pre-line;
-      border-right: 2px solid #e91e63;
-      overflow: hidden;
-      animation: blink 0.75s step-end infinite;
-      min-height: 400px;
-      text-align: left;
-      padding: 0 10px;
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    .signature {
-      font-family: 'Brush Script MT', cursive;
-      text-align: right;
-      margin-top: 40px;
-      color: #e91e63;
-      font-size: 1.5em;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-      }
-
-      #typewriter {
-        font-size: 1em;
-      }
-
-      .signature {
-        font-size: 1.2em;
-      }
-    }
-
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Heart_corazón.svg/1024px-Heart_corazón.svg.png') no-repeat center;
-      background-size: contain;
-      animation: float 8s infinite ease-in-out, fadeIn 2s forwards;
-      opacity: 0.6;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-100px) scale(1.2); }
-      100% { transform: translateY(0) scale(1); }
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 0.6; }
+    .softline{
+      width:100%;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+      margin:20px 0;
+      border:0;
     }
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <header>
+      <div class="title">Meow, choose your little adventure</div>
+      <div class="subtitle">Four sweet doors. Pick one—I'll meet you inside.</div>
+    </header>
 
-  <audio id="bg-music" loop>
-    <source src="TADHANA (Lyrics) - UP DHARMA DOWN.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+    <section class="grid" aria-label="Page choices">
+      <article class="card">
+        <h3>First page</h3>
+        <p>You’re Not Alone</p>
+        <a class="cta" href="first.html" aria-label="Open first page">
+          <span class="spark" aria-hidden="true"></span>
+          Open
+        </a>
+      </article>
 
-  <div class="heart" style="top:10%; left:5%; animation-delay:0s;"></div>
-  <div class="heart" style="top:20%; left:80%; animation-delay:2s;"></div>
-  <div class="heart" style="top:30%; left:40%; animation-delay:4s;"></div>
-  <div class="heart" style="top:50%; left:70%; animation-delay:6s;"></div>
+      <article class="card">
+        <h3>Second page</h3>
+        <p>Hindi Ako Susuko</p>
+        <a class="cta" href="second.html" aria-label="Open second page">
+          <span class="spark" aria-hidden="true"></span>
+          Open
+        </a>
+      </article>
 
-  <button id="start-button" onclick="startSite()">Click here, my love 💗</button>
+      <article class="card">
+        <h3>Third page</h3>
+        <p>Yakap ng Salita</p>
+        <a class="cta" href="third.html" aria-label="Open third page">
+          <span class="spark" aria-hidden="true"></span>
+          Open
+        </a>
+      </article>
 
-  <div id="message-container">
-    <h1>🌙 Para kay Angelica, Kahit Malayo Ka 🌙</h1>
-    <div id="typewriter"></div>
-    <div class="signature">— Mark</div>
+      <article class="card">
+        <h3>Fourth page</h3>
+        <p>Ikaw ang Kulay ng Mundo Ko</p>
+        <a class="cta" href="fourth.html" aria-label="Open fourth page">
+          <span class="spark" aria-hidden="true"></span>
+          Open
+        </a>
+      </article>
+    </section>
+
+    <hr class="softline" />
+
+    <footer>
+      Crafted with care. If one door feels shy, try another—each holds a little light.
+    </footer>
   </div>
-
-  <script>
-    const fullMessage = `
-Mahal na mahal kita, sobra-sobra, 
-Patay na patay ako sa’yo, Angelica. 
-Kahit magkalayo tayo  Manila, Iloilo   
-Puso ko’y lumilipad, lumalapit sa’yo.
-
-Sa bawat gabi, ikaw ang dasal, 
-Sa bawat umaga, ikaw ang araw. 
-Ayokong mawala ka, ‘yan ang totoo, 
-Dahil sa puso ko, ikaw ang bumuo.
-
-Kung pwede lang, araw-araw kitang yakapin, 
-Sa tula, sa hangin, sa init ng damdamin. 
-Gagawin kong makulay ang mundo mo, 
-Dahil ikaw ang kulay ng mundo ko.
-
-Pasensya na, mahal, sa nangyari ngayon, 
-Alam kong nasaktan ka, at ako’y may ambag doon. 
-Hindi ko ginusto, hindi ko sinadya, 
-Ang mahalaga’y ayokong mawala ka.
-
-Ikaw lang ang mahal ko, Angelica, wala nang iba, 
-Sa puso’t isip ko, ikaw lang ang tanging sinta. 
-Kahit ilang ulit pa akong masaktan o magkamali, 
-Babalik at babalik ako sa’yo  buong puso, walang mali.
-
-Ikaw ang tula sa bawat pahina ng araw, 
-Ang musika sa katahimikan ng gabing mapanglaw. 
-Ikaw ang dahilan kung bakit ako sumusulat, 
-Upang ipadama ang pag-ibig kong tapat.
-
-Kaya sana, maramdaman mo rin, 
-Ang pag-ibig kong tunay, walang bitin. 
-Mahal na mahal kita, Angelica, 
-At kahit malayo ka… akin ka pa rin sa tula.
-`;
-
-    function typeText(text, index = 0) {
-      if (index <= text.length) {
-        document.getElementById("typewriter").innerText = text.slice(0, index);
-        const delay = 60 + Math.random() * 60;
-        setTimeout(() => typeText(text, index + 1), delay);
-      }
-    }
-
-    function startSite() {
-      const music = document.getElementById('bg-music');
-      const message = document.getElementById('message-container');
-      const button = document.getElementById('start-button');
-
-      music.play().then(() => {
-        message.style.display = 'block';
-        setTimeout(() => {
-          message.style.opacity = '1';
-        }, 100);
-
-        button.style.display = 'none';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        setTimeout(() => {
-          typeText(fullMessage);
-        }, 32000); // 32-second delay
-      }).catch(() => {
-        alert("Please tap anywhere to enable music 💗");
-        document.body.addEventListener('click', () => music.play(), { once: true });
-      });
-    }
-  </script>
 </body>
 </html>

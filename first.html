@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message for Meow</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .message-box {
+      max-width: 90%;
+      margin: 20px auto;
+      background-color: #fff;
+      border: 2px solid #f2c1c1;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #d66;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+
+    .signature {
+      margin-top: 30px;
+      text-align: right;
+      font-style: italic;
+      font-size: 1em;
+    }
+
+    .paragraph {
+      visibility: hidden;
+      white-space: pre-wrap;
+      font-size: 1em;
+    }
+
+    audio {
+      display: none;
+    }
+
+    #back-button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 10px 20px;
+      font-size: 15px;
+      background-color: #e91e63;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      box-shadow: 0 0 10px rgba(233, 30, 99, 0.4);
+      transition: background-color 0.3s;
+    }
+    #back-button:hover {
+      background-color: #c2185b;
+    }
+
+    @media (min-width: 600px) {
+      .message-box {
+        max-width: 700px;
+        padding: 30px;
+      }
+
+      h2 {
+        font-size: 2em;
+      }
+
+      .paragraph {
+        font-size: 1.1em;
+      }
+
+      .signature {
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="song4.mp3" type="audio/mpeg">
+    <source src="meow.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="message-box">
+    <h2>Hi Meow,</h2>
+    <p class="paragraph">I know you’ve been going through a lot lately. I may not know every detail, but I can feel that your heart is tired. And I just want you to know… I’m here.</p>
+    <p class="paragraph">You don’t have to go through everything alone. You don’t have to carry all the weight by yourself. I’m not here to fix everything or rush you to feel better. I’m just here—to stay, to listen, to care.</p>
+    <p class="paragraph">If you ever feel like talking, or even just sitting in silence with someone who cares, I’m just in my party room. You can message me anytime, on any app, any platform. No pressure. No need to explain anything. Just come as you are.</p>
+    <p class="paragraph">I want to protect you, not just from the world, but from the feeling that you’re alone in it. I want to take care of you in the small ways I can—by being present, by being kind, by reminding you that you matter.</p>
+    <p class="paragraph">You don’t have to be okay all the time. You don’t have to smile when you don’t feel like it. You’re allowed to feel sad, tired, or lost. And even in those moments, I’ll still be here—quietly cheering for you, gently holding space for you.</p>
+    <p class="paragraph">You’re important to me, Meow. I care about you deeply. And I’ll keep showing up, in little ways, to remind you that you’re not alone.</p>
+    <p class="paragraph">Whenever you’re ready, I’m just a message away.</p>
+    <div class="signature">—Mark</div>
+
+    <!-- Back Button -->
+    <a href="index.html" id="back-button">← Back to Index</a>
+  </div>
+
+  <script>
+    const paragraphs = document.querySelectorAll('.paragraph');
+    let delay = 0;
+
+    paragraphs.forEach((p) => {
+      const text = p.textContent;
+      p.textContent = '';
+      p.style.visibility = 'visible';
+
+      setTimeout(() => {
+        let i = 0;
+        const interval = setInterval(() => {
+          p.textContent += text.charAt(i);
+          i++;
+          if (i >= text.length) clearInterval(interval);
+        }, 30); // typing speed
+      }, delay);
+      delay += text.length * 30 + 500; // delay before next paragraph starts
+    });
+  </script>
+</body>
+</html>
