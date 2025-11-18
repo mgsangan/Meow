@@ -33,14 +33,8 @@
       justify-content:center;
       padding:28px;
     }
-    .wrap{
-      max-width:860px;
-      width:100%;
-    }
-    header{
-      text-align:center;
-      margin-bottom:22px;
-    }
+    .wrap{max-width:860px;width:100%}
+    header{text-align:center;margin-bottom:22px}
     .title{
       font-family:"Playfair Display", serif;
       font-size: clamp(28px, 6vw, 48px);
@@ -55,17 +49,13 @@
       color:var(--muted);
       font-size: clamp(15px, 2.8vw, 18px);
     }
-
     .grid{
       display:grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
       gap:16px;
       margin-top:24px;
     }
-    @media (max-width:640px){
-      .grid{grid-template-columns:1fr}
-    }
-
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
     .card{
       position:relative;
       background:linear-gradient(180deg, var(--card), #131523);
@@ -89,18 +79,8 @@
       box-shadow: var(--glow);
       border-color: rgba(255,143,179,.35);
     }
-    .card h3{
-      margin:4px 0 6px;
-      font-size: clamp(18px, 3vw, 22px);
-      font-weight:700;
-      color:var(--text);
-    }
-    .card p{
-      margin:0 0 14px;
-      font-size: clamp(14px, 2.6vw, 16px);
-      color:var(--muted);
-    }
-
+    .card h3{margin:4px 0 6px;font-size: clamp(18px, 3vw, 22px);font-weight:700;color:var(--text)}
+    .card p{margin:0 0 14px;font-size: clamp(14px, 2.6vw, 16px);color:var(--muted)}
     .cta{
       display:inline-flex;
       align-items:center;
@@ -121,36 +101,19 @@
     .spark{
       width:9px;height:9px;border-radius:50%;
       background: var(--accent-2);
-      box-shadow:
-        0 0 10px rgba(255,198,217,.8),
-        0 0 20px rgba(255,143,179,.6);
+      box-shadow:0 0 10px rgba(255,198,217,.8),0 0 20px rgba(255,143,179,.6);
       animation: twinkle 2.4s ease-in-out infinite;
     }
-    @keyframes twinkle{
-      0%,100%{opacity:.6; transform:scale(.9)}
-      50%{opacity:1; transform:scale(1.2)}
-    }
-
-    footer{
-      margin-top:24px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .softline{
-      width:100%;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-      margin:20px 0;
-      border:0;
-    }
+    @keyframes twinkle{0%,100%{opacity:.6; transform:scale(.9)}50%{opacity:1; transform:scale(1.2)}}
+    footer{margin-top:24px;text-align:center;color:var(--muted);font-size:14px}
+    .softline{width:100%;height:1px;background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);margin:20px 0;border:0}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="title">Meow, choose your little adventure</div>
-      <div class="subtitle">Four sweet doors. Pick one—I'll meet you inside.</div>
+      <div class="subtitle">Five sweet doors. Pick one—I'll meet you inside.</div>
     </header>
 
     <section class="grid" aria-label="Page choices">
@@ -158,8 +121,7 @@
         <h3>First page</h3>
         <p>You’re Not Alone</p>
         <a class="cta" href="first.html" aria-label="Open first page">
-          <span class="spark" aria-hidden="true"></span>
-          Open
+          <span class="spark" aria-hidden="true"></span>Open
         </a>
       </article>
 
@@ -167,8 +129,7 @@
         <h3>Second page</h3>
         <p>Hindi Ako Susuko</p>
         <a class="cta" href="second.html" aria-label="Open second page">
-          <span class="spark" aria-hidden="true"></span>
-          Open
+          <span class="spark" aria-hidden="true"></span>Open
         </a>
       </article>
 
@@ -176,8 +137,7 @@
         <h3>Third page</h3>
         <p>Yakap ng Salita</p>
         <a class="cta" href="third.html" aria-label="Open third page">
-          <span class="spark" aria-hidden="true"></span>
-          Open
+          <span class="spark" aria-hidden="true"></span>Open
         </a>
       </article>
 
@@ -185,8 +145,16 @@
         <h3>Fourth page</h3>
         <p>Ikaw ang Kulay ng Mundo Ko</p>
         <a class="cta" href="fourth.html" aria-label="Open fourth page">
-          <span class="spark" aria-hidden="true"></span>
-          Open
+          <span class="spark" aria-hidden="true"></span>Open
+        </a>
+      </article>
+
+      <!-- New card for last.html -->
+      <article class="card">
+        <h3>Last page</h3>
+        <p>Ang Huling Hakbang</p>
+        <a class="cta" href="last.html" aria-label="Open last page">
+          <span class="spark" aria-hidden="true"></span>Open
         </a>
       </article>
     </section>
